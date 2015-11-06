@@ -1,5 +1,89 @@
 # AI-Logic
 
+####Psuedo Prolog
+```
+person(Frank)
+person(John)
+person(Cindy)
+person(Julie)
+
+playsGuitar(John)
+playsGuitar(Julie)
+playsguitar(Frank)
+
+hasCar(Frank)
+hasCar(Julie)
+
+age(John, 18)
+age(Julie, 26)
+age(Cindy, 101)
+age(Frank, 61)
+
+married(Frank, Julie)
+married(Julie, Frank)
+
+//, = AND
+//; = OR
+
+AARPmember(x) :-
+    person(x),
+    age(x, y),
+    y > 60.
+    
+takesLessons(x) :-
+    person(x), 
+    playsGuitar(x).
+    
+paysFees(x) :-
+    person(x),
+    AARPmember(x);   
+    takesLessons(x).
+    
+isPoor(x) :-
+    person(x),
+    paysFees(x),
+    age(x) < 25.
+    
+hasInsuranceDiscount(x) :-
+    person(x),
+    AARPmember(x),
+    hasCar(x).
+    
+isKid(x) :-
+    person(x),
+    playsGuitar(x),
+    age(x) <20,
+    not(hasCar(x).
+    
+playsDuets(x) :-
+    person(x),
+    person(y),
+    playsGuitar(x),
+    playsGuitar(y),
+    married(x, y).
+    
+hasItMade(x) :-
+  person(x),
+  person(y),
+  playsDuets(x),
+  not(isPoor(x)),
+  hasInsuranceDiscount(y), 
+  married(x, y).
+  
+```
+
+
+
+
+
+
+
+
+
+
+
+
+### So this sucked.  Sorry :/
 Every person orders a meal, drink and has a cost.
 
 1. Zachary didn't order the spaghetti.
