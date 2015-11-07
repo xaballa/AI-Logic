@@ -1,0 +1,67 @@
+Rules:
+
+Frank is a person
+John is a person
+Cindy is a person
+Julie is a person
+
+John plays guitar
+Julie plays guitar
+Frank plays guitar
+
+Frank has a car
+Julie has a car
+
+John's age is 18
+Julie's age is 26
+Cindy's age is 101
+Frank's age is 61
+
+Frank is married to Julie
+Julie is married to Frank
+
+You are an AARP member if you are a person and are older than 60
+You take guitar lessons if you are a person and play guitar
+You pay fees if you are a person and are an AARP member or take lessons
+You are poor if you are a person and pay fees and are younger than 25
+You have an insurance discount if you are a person, are an AARPmember and have a car
+You are a kid if you are a person, play guitar, are younger than 20, and have no car
+You play duets if you are a person, your partner is a person, you play guitar, your partner plays a guitar, and you     both are married to each other
+You have it made if you a person, your partner is a person, you play duets, you're not poor, you have an insurance        discount, and you are married with your 
+
+partner
+
+Translate:
+
+person(Frank)
+person(John)
+person(Cindy)
+person(Julie)
+playsGuitar(John)
+playsGuitar(Julie)
+playsGuitar(Frank)
+hasCar(Frank)
+hasCar(Julie)
+ageRetire(John,18)
+ageRetire(Julie,26)
+ageRetire(Cindy,101)
+ageRetire(Frank,61)
+ageYoung(John,18)
+ageYoung(Julie,26)
+ageYoung(Cindy,101)
+ageYoung(Frank,61)
+ageKid(John,18)
+ageKid(Julie,26)
+ageKid(Cindy,101)
+ageKid(Frank,61)
+married(Frank,Julie)
+married(Julie,Frank)
+
+person(x) ^ playsGuitar(x) ^ !hasCar(x) ^ ageKid(x,z) -> isKid(x)
+person(x) ^ ageRetire(x,z) -> AARPmember(x)
+person(x) ^ playsGuitar(x) -> takesLessons(x)
+person(x) ^ AARPmember(x) v takesLessons(x) -> paysFees(x)
+person(x) ^ ageYoung(x,z) -> isPoor(x)
+person(x) ^ AARPmember(x) ^ hasCar(x) -> hasInsuranceDiscount(x)
+person(x) ^ person(y) ^ playsGuitar(x) ^ playsGuitar(y) ^ married(x,y) -> playsDuets(x,y)
+person(x) ^ person(y) ^ playsDuets(x,y) ^ !isPoor(x), hasInsuranceDiscount(x), married(x,y) -> hasItMade(x,y)
